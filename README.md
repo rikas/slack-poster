@@ -1,12 +1,14 @@
-# Slackwebhooks
+# Slack Poster
 
-TODO: Write a gem description
+[Slack](https://slack.com/) is a mashup of chatrooms and collaborative sharing tools that are meant to do away with redundant conversations in multiple places.
+
+slack-poster is a simple gem to make your integration with Slack easier. It supports only incoming communications (from you to Slack).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'slackwebhooks'
+    gem 'slack-poster'
 
 And then execute:
 
@@ -14,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install slackwebhooks
+    $ gem install slack-poster
 
 ## Usage
 
@@ -22,7 +24,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/slackwebhooks/fork )
+1. Fork it ( http://github.com/rikas/slack-poster/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
