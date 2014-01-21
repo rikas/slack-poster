@@ -46,8 +46,8 @@ module Slack
       @icon_emoji = format_emoji(options[:icon_emoji])
       @icon_url = options[:icon_url]
 
-      raise ArgumentError, 'Team name is required' if team.blank?
-      raise ArgumentError, 'Token is' if token.blank?
+      raise ArgumentError, 'Team name is required' if team.nil?
+      raise ArgumentError, 'Token is' if token.nil?
     end
 
     # This method will post to the configured team Slack.
