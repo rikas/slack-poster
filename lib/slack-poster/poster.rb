@@ -37,7 +37,7 @@ module Slack
     #        icon_emoji: 'ghost')
     #
     def initialize(team, token, options = {})
-      self.class.base_uri("https://#{team}.slack.com/services/hooks/incoming-webhook")
+      self.class.base_uri("https://#{team}.slack.com")
       self.class.default_params(token: token)
 
       @username = options[:username] || 'webhookbot'
@@ -52,14 +52,22 @@ module Slack
 
     # This method will post to the configured team Slack.
     def send_message(text)
-      payload = { text: text, channel: @channel, username: @username }.merge(avatar_hash)
-      puts message
+      body = { text: text, channel: @channel, username: @username }.merge(avatar_hash)
+      body = { body: "payload=#{body.to_json}" }
+
+      response = self.class.post('/services/hooks/incoming-webhook', body)
+
+      "#{response.body} (#{response.code})"
     end
 
     private
 
     def avatar_hash
       @icon_emoji ? { icon_emoji: @icon_emoji } : { icon_url: @icon_url }
+    end
+
+    def format_channel(channel)
+      "##{channel.split('#').last}"
     end
 
     def format_emoji(emoji)
