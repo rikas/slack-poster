@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
 ```console
 gem 'slack-poster'
-``
+```
 
 And then execute:
 
@@ -34,7 +34,7 @@ TOKEN = 'hd7heoo2oijd0'
 
 poster = Slack::Poster.new(TEAM, TOKEN)
 poster.send_message('Hello, world!')
-``
+```
 
 You can use an options array if you don't want to use the settings configured directly on Slack:
 
@@ -45,7 +45,7 @@ options = {
   username: 'Tester',
   channel: '#random'
 }
-``
+```
 
 And then use it as a third parameter. Note that every option is optional (no pun intended!).
 
