@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['oterosantos@gmail.com']
   spec.summary       = %q{Slack wrapper for Incoming WebHooks integrations.}
   spec.description   = %q{slack-poster is a gem to make your integration with Slack WebHooks easier.}
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/rikas/slack-poster'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
