@@ -9,7 +9,7 @@ slack-poster is a simple gem to make your integration with Slack easier. It supp
 Add this line to your application's Gemfile:
 
 ```console
-gem 'slack-poster'
+$ gem 'slack-poster'
 ```
 
 And then execute:
