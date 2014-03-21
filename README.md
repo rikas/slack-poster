@@ -26,10 +26,12 @@ $ gem install slack-poster
 
 ## Usage
 
-Just create a new poster and send the message:
+First, you need to create an Incoming Webhook integration at https://team-name.slack.com/services/new/incoming-webhook and take note of the generated token.
+
+Next, create a new poster and send the message:
 
 ```ruby
-TEAM = 'my-test-team'
+TEAM = 'team-name'
 TOKEN = 'hd7heoo2oijd0'
 
 poster = Slack::Poster.new(TEAM, TOKEN)
@@ -51,7 +53,7 @@ And then use it as a third parameter. Note that every option is optional (no pun
 
 ```ruby
 poster = Slack::Poster.new(TEAM, TOKEN, options)
-poster.send('Hi!') # will send to #random with the username 'Tester'
+poster.send_message('Hi!') # will send to #random with the username 'Tester'
 ```
 
 That's it!
