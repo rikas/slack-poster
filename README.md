@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/rikas/slack-poster.svg)](https://gemnasium.com/rikas/slack-poster)
+
 # Slack Poster
 
 [Slack](https://slack.com/) is a mashup of chatrooms and collaborative sharing tools that are meant to do away with redundant conversations in multiple places.
