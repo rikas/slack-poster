@@ -6,8 +6,8 @@ module Slack
 
     attr_accessor :username, :channel
 
-    # The default format of the requests. Used on HTTP header 'Content-Type'.
-    format :json
+    # The format of the response. This comes back as 'ok' from slack.
+    format :plain
 
     # Disable the use of rails query string format.
     #
@@ -53,9 +53,8 @@ module Slack
     # This method will post to the configured team Slack.
     def send_message(text)
       body = { text: text, channel: @channel, username: @username }.merge(avatar_hash)
-      body = { body: "payload=#{body.to_json}" }
 
-      response = self.class.post('/services/hooks/incoming-webhook', body)
+      response = self.class.post('/services/hooks/incoming-webhook', { body: { payload: body.to_json }})
 
       "#{response.body} (#{response.code})"
     end
