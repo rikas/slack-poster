@@ -1,7 +1,6 @@
 [![Dependency Status](https://gemnasium.com/rikas/slack-poster.svg)](https://gemnasium.com/rikas/slack-poster)
 
 # Slack Poster
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rikas/slack-poster?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Slack](https://slack.com/) is a mashup of chatrooms and collaborative sharing tools that are meant to do away with redundant conversations in multiple places.
 
