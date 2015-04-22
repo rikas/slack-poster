@@ -47,7 +47,7 @@ module Slack
     end
 
     def send_message(message)
-      body = message.is_a?(String) ? options.merge(text: text) : options.merge(message.as_json)
+      body = message.is_a?(String) ? options.merge(text: message) : options.merge(message.as_json)
 
       attach_extras(body) unless attachments.empty?
 
