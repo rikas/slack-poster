@@ -4,7 +4,7 @@ module Slack
   class Poster
     include HTTParty
 
-    attr_accessor :username, :channel
+    attr_accessor :url, :options, :attachments
 
     # The format of the response. This comes back as 'ok' from slack.
     format :plain
@@ -36,42 +36,26 @@ module Slack
     #   => Slack::Poster.new('myteam', 'eNmZHQY6f591ziHyZdzePFz8', username: 'Ricardo',
     #        icon_emoji: 'ghost')
     #
-    def initialize(team, token, options = {})
-      self.class.base_uri("https://#{team}.slack.com")
-      self.class.default_params(token: token)
+    def initialize(webhook_url, options = {})
+      self.class.base_uri(webhook_url)
 
-      @username = options[:username] || 'webhookbot'
-      @channel  = options[:channel] || '#general'
+      @attachments = []
 
-      @icon_emoji = format_emoji(options[:icon_emoji])
-      @icon_url = options[:icon_url]
+      @options = options
 
-      raise ArgumentError, 'Team name is required' if team.nil?
-      raise ArgumentError, 'Token is' if token.nil?
+      raise ArgumentError, 'Webhook URL is required' if webhook_url.nil?
     end
 
-    # This method will post to the configured team Slack.
-    def send_message(text)
-      body = { text: text, channel: @channel, username: @username }.merge(avatar_hash)
+    def send_message(message)
+      body = message.is_a?(String) ? options.merge(text: text) : options.merge(message.as_json)
 
-      response = self.class.post('/services/hooks/incoming-webhook', { body: { payload: body.to_json }})
+      attach_extras(body) unless attachments.empty?
+
+      response = self.class.post('', { body: { payload: body.to_json }})
+
+      puts body.to_json
 
       "#{response.body} (#{response.code})"
-    end
-
-    private
-
-    def avatar_hash
-      @icon_emoji ? { icon_emoji: @icon_emoji } : { icon_url: @icon_url }
-    end
-
-    def format_channel(channel)
-      "##{channel.split('#').last}"
-    end
-
-    def format_emoji(emoji)
-      emoji = emoji.to_s.gsub(':', '')
-      emoji.empty? ? nil : ":#{emoji}:"
     end
   end
 end
