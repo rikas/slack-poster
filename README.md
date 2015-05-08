@@ -2,9 +2,8 @@
 
 # Slack Poster
 
-[Slack](https://slack.com/) is a mashup of chatrooms and collaborative sharing tools that are meant to do away with redundant conversations in multiple places.
-
-slack-poster is a simple gem to make your integration with Slack easier. It supports only incoming communications (from you to Slack).
+slack-poster is a simple gem to make your integration with Slack easier. It supports only incoming
+communications (from you to Slack).
 
 ## Installation
 
@@ -26,21 +25,31 @@ Or install it yourself as:
 $ gem install slack-poster
 ```
 
+## Slack setup
+
+This gem will use a Incoming WebHook integration on Slack. First, you need to create a new
+Incoming Webhook integration at `https://team-name.slack.com/services/new/incoming-webhook` (where
+"team-name" should be your own team name).
+
+![](http://cl.ly/image/2D2Y0x2B2847/slack_setup1.png)
+
+Hit "Add Incoming WebHooks Integration" and go to the next screen. Here you can add a name to your
+integration, customize the username that will post and the icon.
+
+![](http://cl.ly/image/2s3r343K0w3T/slack_setup2.png)
+
+Copy the Webhook URL, because you'll need it. Click "Save Settings" and you're done.
+
 ## Usage
 
-First, you need to create an Incoming Webhook integration at https://team-name.slack.com/services/new/incoming-webhook and take note of the generated token.
-
-Next, create a new poster and send the message:
+First you have to initialize your poster and then you can use `send_message` to send your message.
 
 ```ruby
-TEAM = 'team-name'
-TOKEN = 'hd7heoo2oijd0'
-
-poster = Slack::Poster.new(TEAM, TOKEN)
-poster.send_message('Hello, world!')
+poster = Slack::Poster.new(YOUR_WEBHOOK_URL)
+poster.send_message('Hello world!')
 ```
 
-You can use an options array if you don't want to use the settings configured directly on Slack:
+You can use an options array if you don't want to use the default settings:
 
 ```ruby
 options = {
@@ -51,14 +60,16 @@ options = {
 }
 ```
 
-And then use it as a third parameter. Note that every option is optional (no pun intended!).
+And then use it as a second parameter. Note that every option is optional (no pun intended!).
 
 ```ruby
-poster = Slack::Poster.new(TEAM, TOKEN, options)
-poster.send_message('Hi!') # will send to #random with the username 'Tester'
+poster = Slack::Poster.new(YOUR_WEBHOOK_URL, options)
+poster.send_message('Hello with options') # will send to #random with the username 'Tester'
 ```
 
-That's it!
+## Message attachments
+
+COMING SOON!
 
 ## Contributing
 
