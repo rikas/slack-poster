@@ -20,7 +20,6 @@ module Slack
       self.fields << Field.new(title, value, short)
     end
 
-
     def author=(author)
       @author = author
     end
