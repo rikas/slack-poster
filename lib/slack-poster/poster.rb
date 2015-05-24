@@ -4,7 +4,7 @@ module Slack
   class Poster
     include HTTParty
 
-    attr_accessor :url, :options, :attachments
+    attr_accessor :options
 
     # The format of the response. This comes back as 'ok' from slack.
     format :plain
@@ -46,8 +46,6 @@ module Slack
     def initialize(webhook_url, options = {})
       self.class.base_uri(webhook_url)
 
-      @attachments = []
-
       @options = options
 
       raise ArgumentError, 'Webhook URL is required' if webhook_url.nil?
@@ -67,8 +65,6 @@ module Slack
     # and add Slack::Attachment objects.
     def send_message(message)
       body = message.is_a?(String) ? options.merge(text: message) : options.merge(message.as_json)
-
-      attach_extras(body) unless attachments.empty?
 
       response = self.class.post('', { body: { payload: body.to_json }})
 
