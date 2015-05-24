@@ -21,6 +21,7 @@ Bundler.setup
 
 require 'slack-poster'
 
+# Use the poster test webhook from an env variable
 ENV['SLACK_POSTER_TEST_WEBHOOK'] ||= 'https://hooks.slack.com/services/TEST'
 
 require 'webmock/rspec'
