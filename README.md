@@ -1,4 +1,5 @@
 [![Dependency Status](https://gemnasium.com/rikas/slack-poster.svg)](https://gemnasium.com/rikas/slack-poster)
+[![Build Status](https://travis-ci.org/rikas/slack-poster.svg?branch=master)](https://travis-ci.org/rikas/slack-poster)
 
 # Slack Poster
 
