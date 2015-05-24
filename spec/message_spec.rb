@@ -32,10 +32,15 @@ describe Slack::Message do
 
     context 'when attachments are added' do
       it 'returns the correct json' do
-        att1 = Slack::Attachment.new
-        att2 = Slack::Attachment.new
+        att1 = Slack::Attachment.new(text: 'Att1')
+        att2 = Slack::Attachment.new(title: 'Att2')
 
-        message.attachments = [att1, att2]
+        message.add_attachment(att1)
+        message.add_attachment(att2)
+
+        json = { text: 'hello', attachments: [{ text: 'Att1' }, { title: 'Att2' }] }
+
+        expect(message.as_json).to eq(json)
       end
     end
   end
