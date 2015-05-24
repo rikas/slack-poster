@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Slack::Poster do
-  let(:poster) { described_class.new(SecureRandom.base64) }
+  let(:hook) { 'https://hooks.slack.com/services/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' }
+  let(:poster) { described_class.new(hook) }
 
   let(:options) do
     {
@@ -12,7 +13,7 @@ describe Slack::Poster do
     }
   end
 
-  let(:with_options) { described_class.new(SecureRandom.base64, options) }
+  let(:with_options) { described_class.new(hook, options) }
 
   describe '.new' do
     it 'requires the webhook_url' do
@@ -43,9 +44,23 @@ describe Slack::Poster do
 
   describe '#send_message' do
     it 'accepts a message object' do
+      VCR.use_cassette('default_post') do
+        message = Slack::Message.new('Hello world')
+
+        response = poster.send_message(message)
+
+        expect(response).to_not be_nil
+        expect(response.code).to eq(200)
+      end
     end
 
     it 'accepts a string' do
+      VCR.use_cassette('default_post') do
+        response = poster.send_message('Hello world')
+
+        expect(response).to_not be_nil
+        expect(response.code).to eq(200)
+      end
     end
   end
 end
