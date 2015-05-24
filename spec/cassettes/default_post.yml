@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - text/html
       Date:
-      - Sun, 24 May 2015 13:52:52 GMT
+      - Sun, 24 May 2015 14:05:58 GMT
       Server:
       - Apache
       Strict-Transport-Security:
@@ -40,5 +40,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: ok
     http_version: 
-  recorded_at: Sun, 24 May 2015 13:52:52 GMT
+  recorded_at: Sun, 24 May 2015 14:05:58 GMT
 recorded_with: VCR 2.9.3

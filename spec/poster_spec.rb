@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Slack::Poster do
-  let(:hook) { 'https://hooks.slack.com/services/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' }
+  let(:hook) { ENV.fetch('SLACK_POSTER_TEST_WEBHOOK') }
   let(:poster) { described_class.new(hook) }
 
   let(:options) do

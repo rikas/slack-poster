@@ -21,6 +21,8 @@ Bundler.setup
 
 require 'slack-poster'
 
+ENV['SLACK_POSTER_TEST_WEBHOOK'] ||= 'https://hooks.slack.com/services/TEST'
+
 require 'webmock/rspec'
 
 WebMock.disable_net_connect!
