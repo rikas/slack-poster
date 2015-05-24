@@ -1,6 +1,6 @@
 module Slack
   class Author
-    ATTRIBUTES = %i(name link icon)
+    ATTRIBUTES = [:name, :link, :icon]
 
     ATTRIBUTES.each do |attribute|
       attr_accessor attribute

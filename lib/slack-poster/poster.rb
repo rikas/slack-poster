@@ -64,8 +64,8 @@ module Slack
       attach_extras(body) unless attachments.empty?
 
       response = self.class.post('', { body: { payload: body.to_json }})
-
-      "#{response.body} (#{response.code})"
+      
+      response
     end
   end
 end

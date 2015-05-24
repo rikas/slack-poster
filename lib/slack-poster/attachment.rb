@@ -1,6 +1,6 @@
 module Slack
   class Attachment
-    ATTRIBUTES = %i(fallback text title title_link image_url color pretext)
+    ATTRIBUTES = [:fallback, :text, :title, :title_link, :image_url, :color, :pretext]
 
     ATTRIBUTES.each do |attribute|
       attr_accessor attribute
