@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Slack::VERSION
   spec.authors       = ['Ricardo Otero']
   spec.email         = ['oterosantos@gmail.com']
-  spec.summary       = %q{Slack wrapper for Incoming WebHooks integrations.}
-  spec.description   = %q{slack-poster is a gem to make your integration with Slack WebHooks easier.}
+  spec.summary       = 'Slack wrapper for Incoming WebHooks integrations.'
+  spec.description   = 'Slack Poster is a gem to make your integration with Slack WebHooks easier.'
   spec.homepage      = 'https://github.com/rikas/slack-poster'
   spec.license       = 'MIT'
 

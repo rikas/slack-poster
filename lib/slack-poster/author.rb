@@ -8,7 +8,7 @@ module Slack
 
     def initialize(options = {})
       ATTRIBUTES.each do |attribute|
-        self.send("#{attribute}=", options.delete(attribute))
+        send("#{attribute}=", options.delete(attribute))
       end
     end
 

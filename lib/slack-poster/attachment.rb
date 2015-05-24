@@ -1,27 +1,23 @@
 module Slack
   class Attachment
-    ATTRIBUTES = [:fallback, :text, :title, :title_link, :image_url, :color, :pretext]
+    ATTRIBUTES = [:fallback, :text, :title, :title_link, :image_url, :color, :pretext, :author]
 
     ATTRIBUTES.each do |attribute|
       attr_accessor attribute
     end
 
-    attr_reader :fields, :author
+    attr_reader :fields
 
     def initialize(options = {})
       @fields = []
 
       ATTRIBUTES.each do |attribute|
-        self.send("#{attribute}=", options.delete(attribute))
+        send("#{attribute}=", options.delete(attribute))
       end
     end
 
     def add_field(title, value, short = false)
-      self.fields << Field.new(title, value, short)
-    end
-
-    def author=(author)
-      @author = author
+      fields << Field.new(title, value, short)
     end
 
     def as_json
