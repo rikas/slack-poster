@@ -43,23 +43,25 @@ describe Slack::Poster do
   end
 
   describe '#send_message' do
-    it 'accepts a message object' do
-      VCR.use_cassette('default_post') do
-        message = Slack::Message.new('Hello world')
+    context 'with no attachments' do
+      it 'accepts a message object' do
+        VCR.use_cassette('default_post') do
+          message = Slack::Message.new('Hello world')
 
-        response = poster.send_message(message)
+          response = poster.send_message(message)
 
-        expect(response).to_not be_nil
-        expect(response.code).to eq(200)
+          expect(response).to_not be_nil
+          expect(response.code).to eq(200)
+        end
       end
-    end
 
-    it 'accepts a string' do
-      VCR.use_cassette('default_post') do
-        response = poster.send_message('Hello world')
+      it 'accepts a string' do
+        VCR.use_cassette('default_post') do
+          response = poster.send_message('Hello world')
 
-        expect(response).to_not be_nil
-        expect(response.code).to eq(200)
+          expect(response).to_not be_nil
+          expect(response.code).to eq(200)
+        end
       end
     end
   end
