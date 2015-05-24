@@ -34,7 +34,7 @@ describe Slack::Message do
   describe '#as_json' do
     context 'when no attachments were added' do
       it 'returns the correct json' do
-        expect(message.as_json).to eq(text: "hello")
+        expect(message.as_json).to eq(text: 'hello')
       end
     end
 
