@@ -18,6 +18,13 @@ module Slack
     #   => /?selected_ids[]=1&selected_ids[]=2&selected_ids[]=3
     disable_rails_query_string_format
 
+    # Define getters and setters for the options hash keys. This will make assign of the options
+    # more flexible.
+    [:username, :channel, :icon_url, :icon_emoji].each do |option_attr|
+      define_method(option_attr) { @options[option_attr] }
+      define_method("#{option_attr}=") { |value| @options[option_attr] = value }
+    end
+
     # Initializes a Poster instance to post messages with an incoming webhook URL.
     # It also accepts an options hash. If no options are given then the poster uses the default
     # configuration from Slack integration.
