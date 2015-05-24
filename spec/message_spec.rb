@@ -3,6 +3,14 @@ require 'spec_helper'
 describe Slack::Message do
   let(:message) { described_class.new('hello') }
 
+  it 'can be initialized with an attachment' do
+    attachment = Slack::Attachment.new
+
+    message = described_class.new('hi', attachment)
+
+    expect(message.attachments).to eq([attachment])
+  end
+
   describe '#add_attachment' do
     it 'adds an attachment correctly' do
       attachment = Slack::Attachment.new
