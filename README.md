@@ -64,12 +64,23 @@ And then use it as a second parameter. Note that every option is optional (no pu
 
 ```ruby
 poster = Slack::Poster.new(YOUR_WEBHOOK_URL, options)
-poster.send_message('Hello with options') # will send to #random with the username 'Tester'
+poster.send_message('Hello with options')
+# posts message 'Hello with options' to #random with the username 'Tester'
 ```
 
-## Message attachments
+Or you can change the options whenever you want
 
-COMING SOON!
+```ruby
+poster = Slack::Poster.new(YOUR_WEBHOOK_URL)
+poster.username = 'TestUser'
+poster.icon_emoji = ':ghost:'
+poster.send_message('Hello World')
+# posts message 'Hello World' to #random with the username 'TestUser' and ghost emoji as avatar
+```
+
+### Message attachments
+
+Slack Poster supports message attachments.
 
 ## Contributing
 
