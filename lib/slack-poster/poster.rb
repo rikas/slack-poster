@@ -66,7 +66,7 @@ module Slack
     def send_message(message)
       body = message.is_a?(String) ? options.merge(text: message) : options.merge(message.as_json)
 
-      response = self.class.post('', { body: { payload: body.to_json }})
+      response = self.class.post('', body: { payload: body.to_json })
 
       response
     end
