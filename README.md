@@ -79,9 +79,16 @@ poster.send_message('Hello World')
 # posts message 'Hello World' to #random with the username 'TestUser' and ghost emoji as avatar
 ```
 
+You can also send a `Slack::Message` object instead of `String`:
+
+```ruby
+message = Slack::Message.new('hello slack')
+poster.send_message(message)
+```
+
 ### Message attachments
 
-Slack Poster supports message attachments.
+Slack Poster supports message attachments. To do so you have to create `Slack::Attachment` objects and then attach them to a `Slack::Message` object.
 
 ## Contributing
 
