@@ -31,18 +31,18 @@ module Slack
     #
     # ==== Examples
     #
-    # Without options
-    #   => Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va')
+    #   # Without options
+    #   Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va')
     #
-    # With options using a custom username and icon avatar:
-    #   => Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va',
-    #        username: 'Ricardo',
-    #        icon_url: 'http://www.gravatar.com/avatar/92e00fd27c64c94d04140cef88039468.png')
+    #   # With options using a custom username and icon avatar
+    #   Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va',
+    #     username: 'Ricardo',
+    #     icon_url: 'http://www.gravatar.com/avatar/92e00fd27c64c94d04140cef88039468.png')
     #
-    # You can also use an emoji as avatar:
-    #   => Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va',
-    #        username: 'Ricardo',
-    #        icon_emoji: 'ghost')
+    #   # You can also use an emoji as avatar
+    #   Slack::Poster.new('https://hooks.slack.com/services/T044G6VBA//TCIzZQQd7IKhQzCKc6W310va',
+    #     username: 'Ricardo',
+    #     icon_emoji: 'ghost')
     def initialize(webhook_url, options = {})
       self.class.base_uri(webhook_url)
 
@@ -55,11 +55,11 @@ module Slack
     #
     # ==== Examples
     #
-    # Plain text message
-    #   => poster.send_message('hello world')
+    #   # Plain text message
+    #   poster.send_message('hello world')
     #
-    # Using a message object
-    #   => poster.send_message(Slack::Message.new(text: 'hello world'))
+    #   # Using a message object
+    #   poster.send_message(Slack::Message.new(text: 'hello world'))
     #
     # You can have messages with attachments if you build your message with a Slack::Message object
     # and add Slack::Attachment objects.
