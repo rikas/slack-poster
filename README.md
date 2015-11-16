@@ -3,8 +3,7 @@
 
 # Slack Poster
 
-slack-poster is a simple gem to make your integration with Slack easier. It supports only incoming
-communications (from you to Slack).
+slack-poster is a simple gem to make your integration with Slack easier. It supports only incoming communications (from you to Slack).
 
 ## Installation
 
@@ -28,9 +27,7 @@ $ gem install slack-poster
 
 ## Slack setup
 
-This gem will use a Incoming WebHook integration on Slack. First, you need to create a new
-Incoming Webhook integration at `https://team-name.slack.com/services/new/incoming-webhook` (where
-"team-name" should be your own team name).
+This gem will use a Incoming WebHook integration on Slack. First, you need to create a new Incoming Webhook integration at `https://team-name.slack.com/services/new/incoming-webhook` (where "team-name" should be your own team name).
 
 ![](http://cl.ly/image/2D2Y0x2B2847/slack_setup1.png)
 
@@ -75,7 +72,7 @@ Or you can change the options whenever you want
 poster = Slack::Poster.new(YOUR_WEBHOOK_URL)
 poster.username = 'TestUser'
 poster.icon_emoji = ':ghost:'
-poster.send_message('Hello World')
+poster.send_message('Hello World') # => "ok"
 # posts message 'Hello World' to #random with the username 'TestUser' and ghost emoji as avatar
 ```
 
@@ -88,7 +85,82 @@ poster.send_message(message)
 
 ### Message attachments
 
-Slack Poster supports message attachments. To do so you have to create `Slack::Attachment` objects and then attach them to a `Slack::Message` object.
+Slack Poster supports message attachments. To do so you have to create `Slack::Attachment` objects
+and then attach them to a `Slack::Message` object. Read the [official documentation](https://api.slack.com/docs/attachments) to understand how attachments work and see different examples of attachments in practice.
+
+You can build a basic attachment and them attach it to a message and use a poster to post that
+message for you:
+
+```ruby
+# As an alternative you could also initialize the attachment with all the fields
+# Slack::Attachment.new(fallback: 'fallback', pretext: 'pretext', ....)
+attachment = Slack::Attachment.new
+
+# This text will be used in clients that don't show formatted text (eg. IRC, mobile notifications)
+attachment.fallback = "You wouldn't believe who's a mighty pirate!"
+
+attachment.pretext = 'Arrrgh'
+attachment.color = 'danger' # good, warning, danger, or any hex color code (eg. #439FE0)
+
+attachment.image_url = 'https://pbs.twimg.com/profile_images/446438045945180162/KH34Nkuq.jpeg'
+# you can use thumb_url instead for a small thumb pulled to the right
+
+attachment.text = 'To become a mighty pirate Guybrush had to go through the three trials.'
+attachment.title = 'Mighty pirate'
+attachment.title_link = 'http://scummbar.com/'
+
+# If you want to include author information you can use the following methods:
+# attachment.author_name
+# attachment.author_icon
+# attachment.author_link
+# Check Slack documentation for more info.
+
+message = Slack::Message.new('Monkey island news', attachment)
+
+# You can also add the attachment after initializing the message:
+# message = Slack::Message.new('Monkey island news')
+# message.attachments << attachment
+
+poster = Slack::Poster.new(YOUR_WEBHOOK_URL)
+poster.username = 'Monkey Island Daily'
+poster.icon_emoji = ':monkey_face:'
+poster.send_message(message) # => "ok"
+```
+
+This will produce a message like this one:
+
+![](http://f.cl.ly/items/2S0E03450f2d3h2Y2w26/guybrush1.png)
+
+#### Fields
+
+Slack attachment can contain fields that will be displayed in a table inside the message attachment.
+You can add fields with `Slack::Attachment#add_field`:
+
+```ruby
+attachment = Slack::Attachment.new
+attachment.add_field('Name1', 'Value1')
+attachment.add_field('Name2', 'Value2')
+attachment.add_field('Name3', 'Value3')
+attachment.add_field('Name4', 'Value4')
+
+message = Slack::Message.new('What a beautiful table of names and values', attachment)
+
+poster = Slack::Poster.new(YOUR_WEBHOOK_URL)
+poster.send_message(message) # => "ok"
+```
+
+You may notice that the message will display with a vertical list of fields. You can have them side
+by side giving a third boolean parameter (is it a short field?).
+
+```ruby
+attachment = Slack::Attachment.new
+attachment.add_field('Name1', 'Value1', true)
+attachment.add_field('Name2', 'Value2', true)
+attachment.add_field('Name3', 'Value3')
+attachment.add_field('Name4', 'Value4')
+```
+
+This way the first two field will be displayed in the same row.
 
 ## Contributing
 

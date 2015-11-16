@@ -9,12 +9,16 @@ describe Slack::Attachment do
         title: 'title',
         title_link: 'title_link',
         image_url: 'image_url',
+        thumb_url: 'thumb_url',
         color: 'color',
+        author_name: 'author_name',
+        author_link: 'author_link',
+        author_icon: 'author_icon',
         pretext: 'pretext'
       }
     end
 
-    it 'accepts no attributes' do
+    it 'accepts initialization with no attributes' do
       att = described_class.new
 
       expect(att).to_not be_nil
@@ -32,9 +36,6 @@ describe Slack::Attachment do
   describe '#add_field' do
     context 'when short is set to true' do
     end
-  end
-
-  describe '#author=' do
   end
 
   describe '#as_json' do
