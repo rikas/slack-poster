@@ -1,7 +1,6 @@
 require 'bundler/setup'
-Bundler.setup
 
-require 'slack_poster'
+Bundler.require
 
 # Use the poster test webhook from an env variable
 ENV['SLACK_POSTER_TEST_WEBHOOK'] ||= 'https://hooks.slack.com/services/TEST'
