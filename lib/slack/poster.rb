@@ -1,3 +1,8 @@
+require 'slack/version'
+require 'slack/field'
+require 'slack/message'
+require 'slack/attachment'
+
 require 'httparty'
 
 module Slack
