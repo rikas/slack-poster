@@ -3,7 +3,7 @@ module Slack
     ATTRIBUTES = [
       :fallback, :text, :title, :title_link, :image_url, :thumb_url, :color, :pretext, :author,
       :author_name, :author_link, :author_icon
-    ]
+    ].freeze
 
     ATTRIBUTES.each do |attribute|
       attr_accessor attribute
@@ -30,8 +30,8 @@ module Slack
         hash[attribute] = send(attribute) if send(attribute)
       end
 
-      hash.merge!(fields: fields.map(&:as_json)) unless fields.empty?
-      hash.merge!(author: author.as_json) if author
+      hash[:fields] = fields.map(&:as_json) unless fields.empty?
+      hash[:author] = author.as_json if author
 
       hash
     end

@@ -2,10 +2,10 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'slack-poster/version'
+require 'slack_poster/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'slack-poster'
+  spec.name          = 'slack_poster'
   spec.version       = Slack::VERSION
   spec.authors       = ['Ricardo Otero']
   spec.email         = ['oterosantos@gmail.com']

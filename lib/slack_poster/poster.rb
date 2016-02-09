@@ -48,7 +48,7 @@ module Slack
 
       @options = options
 
-      fail ArgumentError, 'Webhook URL is required' if webhook_url.nil?
+      raise ArgumentError, 'Webhook URL is required' if webhook_url.nil?
     end
 
     # Sends a message to Slack. The message can be either plain text or a Slack::Message object.

@@ -1,5 +1,8 @@
-require 'slack-poster/version'
-require 'slack-poster/poster'
-require 'slack-poster/field'
-require 'slack-poster/message'
-require 'slack-poster/attachment'
+require 'slack_poster/version'
+require 'slack_poster/poster'
+require 'slack_poster/field'
+require 'slack_poster/message'
+require 'slack_poster/attachment'
+
+module Slack
+end
