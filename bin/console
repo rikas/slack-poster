@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'slack_poster'
+
+Bundler.require
 
 require 'pry'
 Pry.start
