@@ -6,7 +6,7 @@ require 'slack_poster/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'slack_poster'
-  spec.version       = Slack::VERSION
+  spec.version       = Slack::VERSION.dup
   spec.authors       = ['Ricardo Otero']
   spec.email         = ['oterosantos@gmail.com']
   spec.summary       = 'Slack wrapper for Incoming WebHooks integrations.'
@@ -19,13 +19,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(spec)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.11', '> 1.10'
+  spec.add_development_dependency 'bundler', '> 1.10.0'
   spec.add_development_dependency 'rake', '~> 10.4'
   spec.add_development_dependency 'rspec', '~> 3.4'
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'webmock', '~> 1.22'
   spec.add_development_dependency 'vcr', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.35'
+  spec.add_development_dependency 'rubocop', '~> 0.37', '> 0.35'
 
   spec.add_runtime_dependency 'httparty', '~> 0.13'
 end
