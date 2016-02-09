@@ -19,13 +19,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(spec)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.11.0'
-  spec.add_development_dependency 'rake', '~> 10.4.2', '>= 10.4.2'
-  spec.add_development_dependency 'rspec', '~> 3.2.0', '>= 3.2.0'
-  spec.add_development_dependency 'pry', '~> 0.10.3'
-  spec.add_development_dependency 'webmock', '~> 1.22.3', '>= 1.22.3'
-  spec.add_development_dependency 'vcr', '~> 3.0.0', '>= 3.0.0'
-  spec.add_development_dependency 'rubocop', '~> 0.35.1'
+  spec.add_development_dependency 'bundler', '~> 1.11'
+  spec.add_development_dependency 'rake', '~> 10.4'
+  spec.add_development_dependency 'rspec', '~> 3.4'
+  spec.add_development_dependency 'pry', '~> 0.10'
+  spec.add_development_dependency 'webmock', '~> 1.22'
+  spec.add_development_dependency 'vcr', '~> 3.0'
+  spec.add_development_dependency 'rubocop', '~> 0.35'
 
-  spec.add_runtime_dependency 'httparty', '~> 0.13.7'
+  spec.add_runtime_dependency 'httparty', '~> 0.13'
 end
