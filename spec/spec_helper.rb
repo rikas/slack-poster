@@ -5,11 +5,10 @@ Bundler.require
 # Use the poster test webhook from an env variable
 ENV['SLACK_POSTER_TEST_WEBHOOK'] ||= 'https://hooks.slack.com/services/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'
 
+require 'vcr'
 require 'webmock/rspec'
 
 WebMock.disable_net_connect!
-
-require 'vcr'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
