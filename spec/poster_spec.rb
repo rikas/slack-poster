@@ -35,7 +35,7 @@ describe Slack::Poster do
       end
     end
 
-    describe "#{option_attr}" do
+    describe option_attr.to_s do
       it "gets the #{option_attr} field in options hash" do
         expect(with_options.send(option_attr)).to eq(with_options.options[option_attr])
       end
