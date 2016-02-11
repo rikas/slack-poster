@@ -2,26 +2,12 @@ require 'slack/version'
 require 'slack/field'
 require 'slack/message'
 require 'slack/attachment'
-
-require 'httparty'
+require 'json'
+require 'faraday'
 
 module Slack
   class Poster
-    include HTTParty
-
     attr_accessor :options
-
-    # The format of the response. This comes back as 'ok' from slack.
-    format :plain
-
-    # Disable the use of rails query string format.
-    #
-    # With rails query string format enabled:
-    #   => get '/', :query => {:selected_ids => [1,2,3]}
-    #
-    # Would translate to this:
-    #   => /?selected_ids[]=1&selected_ids[]=2&selected_ids[]=3
-    disable_rails_query_string_format
 
     # Define getters and setters for the options hash keys. This will make assign of the options
     # more flexible.
@@ -49,7 +35,7 @@ module Slack
     #     username: 'Ricardo',
     #     icon_emoji: 'ghost')
     def initialize(webhook_url, options = {})
-      self.class.base_uri(webhook_url)
+      @base_uri = webhook_url
 
       @options = options
 
@@ -71,7 +57,9 @@ module Slack
     def send_message(message)
       body = message.is_a?(String) ? options.merge(text: message) : options.merge(message.as_json)
 
-      response = self.class.post('', body: { payload: body.to_json })
+      conn = Faraday.new(url: @base_uri)
+
+      response = conn.post('', payload: body.to_json)
 
       response
     end

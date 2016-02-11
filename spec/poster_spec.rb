@@ -54,7 +54,7 @@ describe Slack::Poster do
           response = poster.send_message(message)
 
           expect(response).to_not be_nil
-          expect(response.code).to eq(200)
+          expect(response.env.status).to eq(200)
         end
       end
 
@@ -63,7 +63,7 @@ describe Slack::Poster do
           response = poster.send_message('Hello world')
 
           expect(response).to_not be_nil
-          expect(response.code).to eq(200)
+          expect(response.env.status).to eq(200)
         end
       end
     end
