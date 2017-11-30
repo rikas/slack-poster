@@ -31,7 +31,7 @@ describe Slack::Poster do
     end
   end
 
-  %i[username channel icon_url icon_emoji].each do |option_attr|
+  [:username, :channel, :icon_url, :icon_emoji].each do |option_attr|
     describe "#{option_attr}=" do
       it "sets the #{option_attr} field in options hash" do
         poster.send("#{option_attr}=", "test_#{option_attr}")
