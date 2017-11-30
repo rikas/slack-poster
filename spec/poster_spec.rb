@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
-# Ruby 1.9.3 needs to require securerandom
-require 'securerandom' if RUBY_VERSION < '2.0.0'
+require 'securerandom'
 
 describe Slack::Poster do
   let(:hook) { ENV.fetch('SLACK_POSTER_TEST_WEBHOOK') }
