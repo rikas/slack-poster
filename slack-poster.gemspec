@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.37', '> 0.35'
 
-  spec.add_runtime_dependency 'faraday', '~> 0.9.2'
+  spec.add_runtime_dependency 'faraday', '~> 0.9'
 end
