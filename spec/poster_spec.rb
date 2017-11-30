@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 # Ruby 1.9.3 needs to require securerandom
@@ -29,7 +31,7 @@ describe Slack::Poster do
     end
   end
 
-  [:username, :channel, :icon_url, :icon_emoji].each do |option_attr|
+  %i[username channel icon_url icon_emoji].each do |option_attr|
     describe "#{option_attr}=" do
       it "sets the #{option_attr} field in options hash" do
         poster.send("#{option_attr}=", "test_#{option_attr}")

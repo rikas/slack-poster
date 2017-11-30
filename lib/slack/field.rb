@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Slack
   class Field
     attr_accessor :title, :value, :short
