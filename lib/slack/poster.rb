@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'slack/version'
 require 'slack/field'
 require 'slack/message'
@@ -11,7 +13,7 @@ module Slack
 
     # Define getters and setters for the options hash keys. This will make assign of the options
     # more flexible.
-    [:username, :channel, :icon_url, :icon_emoji].each do |option_attr|
+    %i[username channel icon_url icon_emoji].each do |option_attr|
       define_method(option_attr) { @options[option_attr] }
       define_method("#{option_attr}=") { |value| @options[option_attr] = value }
     end

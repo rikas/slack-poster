@@ -3,3 +3,7 @@ Style/Documentation:
 
 Metrics/LineLength:
   Max: 100
+
+Style/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'

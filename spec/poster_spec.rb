@@ -1,7 +1,7 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-# Ruby 1.9.3 needs to require securerandom
-require 'securerandom' if RUBY_VERSION < '2.0.0'
+require 'spec_helper'
+require 'securerandom'
 
 describe Slack::Poster do
   let(:hook) { ENV.fetch('SLACK_POSTER_TEST_WEBHOOK') }
@@ -29,7 +29,7 @@ describe Slack::Poster do
     end
   end
 
-  [:username, :channel, :icon_url, :icon_emoji].each do |option_attr|
+  %i[username channel icon_url icon_emoji].each do |option_attr|
     describe "#{option_attr}=" do
       it "sets the #{option_attr} field in options hash" do
         poster.send("#{option_attr}=", "test_#{option_attr}")
