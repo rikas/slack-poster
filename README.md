@@ -127,7 +127,7 @@ poster.icon_emoji = ':monkey_face:'
 poster.send_message(message) # => "ok"
 ```
 
-This will produce a message like this one:
+This will create a message like this one:
 
 ![](http://f.cl.ly/items/2S0E03450f2d3h2Y2w26/guybrush1.png)
 
