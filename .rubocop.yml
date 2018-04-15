@@ -7,3 +7,6 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*_spec.rb'
+
+Style/ExpandPathArguments:
+  Enabled: false
