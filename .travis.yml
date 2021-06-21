@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.5.8
-  - 2.7.0
+  - 2.7.2
 before_install: gem install bundler
 script:
   - bundle exec rspec --fail-fast
